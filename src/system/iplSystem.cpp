@@ -631,7 +631,7 @@ namespace ipl {
         }
 
         // Delete homebrew titles and exploits
-        utility::ESMisc::DeleteUnauthorizedData(getTreasureHeap());
+        utility::ESMisc::InitSavedata(getTreasureHeap());
 
         // Task threads
         smArg.mpTask1 = EGG::TaskThread::create(0x40, 19, 0x10000, getMem1Sys());
@@ -732,7 +732,7 @@ namespace ipl {
 
 #if defined(KOREAN_BUILD) || !defined(TURN_OFF_CK2_VERIFY)
         // And finally... homebrew's fear.
-        BOOL hasKoreanKey = ES_VerifyCK2() == ES_ERR_OK;
+        BOOL hasKoreanKey = ES_VerifyNewCommonKey() == ES_ERR_OK;
         if (hasKoreanKey) {
             IPLErrorLogAndDisplay(MESG_ERR_KEY2, "ES", hasKoreanKey, 1446);
         }

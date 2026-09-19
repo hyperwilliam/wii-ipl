@@ -27,7 +27,7 @@ namespace EGG {
         virtual nw4r::snd::SoundArchivePlayer* openNandArchive(const char* pPath,
                                                                nw4r::snd::SoundHeap* pHeap);  // 0x14
 
-        virtual nw4r::snd::SoundArchivePlayer* setupMemoryArchive(const void* pPath,
+        virtual nw4r::snd::SoundArchivePlayer* setupMemoryArchive(const void* pBinary,
                                                                   nw4r::snd::SoundHeap* pHeap);  // 0x1C
 
         virtual void closeArchive();  // 0x20

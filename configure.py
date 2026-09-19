@@ -229,7 +229,7 @@ if not config.non_matching:
 
 # Tool versions
 config.binutils_tag = "2.42-1"
-config.compilers_tag = "20250812"
+config.compilers_tag = "20251118"
 config.dtk_tag = "v1.7.5"
 config.objdiff_tag = "v3.4.5"
 config.sjiswrap_tag = "v1.2.2"
@@ -301,6 +301,7 @@ cflags_base = [
     "-fp hardware",
     "-Cpp_exceptions off",
     # "-W all",
+    "-W nomissingreturn",
     "-O4,p",
     "-inline auto",
     '-pragma "cats off"',
@@ -347,7 +348,6 @@ elif args.warn == "error":
 # Main IPL flags
 cflags_ipl = [
     *cflags_base,
-    "-W nomissingreturn",
     "-ipa file",
     "-gccinc",
     "-fp_contract off",

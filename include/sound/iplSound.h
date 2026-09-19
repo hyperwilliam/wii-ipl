@@ -7,7 +7,7 @@
 
 #include <egg/core.h>
 
-#include "IplSound.rsid"
+#include "sound/IplSound.rsid"
 
 namespace ipl {
     namespace snd {

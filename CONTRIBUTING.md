@@ -1,8 +1,9 @@
 ### **Thank you for your interest on helping out!**
 
-**Unfortunately, we do not allow AI to be used for decompiling.**
+**Unfortunately, we do not allow AI for decompiling code in this project**
 - AI often produces code in questionable quality and a human would unlikely write.
 - They may use source code leaks as references as it could be in their training data.
+- Basically, try and avoid stuff like [this](https://github.com/koopthekoopa/wii-ipl/pull/27)
 
 # Resources
 
