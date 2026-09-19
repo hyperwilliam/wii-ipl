@@ -12,8 +12,8 @@
 #include <private/sc.h>
 #include <revolution.h>
 #include <revolution/enc.h>
-#include <revolution/net/NETMisc.h>
 #include <revolution/net/NETDigest.h>
+#include <revolution/net/NETMisc.h>
 
 // TODO: Not yet in the SDK
 typedef struct {
@@ -6223,8 +6223,8 @@ CHANSVmErr CHANSVmInit(CHANSVm* vm, vmPtr work, vmU32 size) {
         /* Image class */
         VmImageAllocCallback = vmNull;
         VmImageCtorCallback = vmNull;
-        if (CHANSVmNewBuiltinObject(vm, "Image", vmNull, VmImageCtor, vmNull, vmNull, vmNull, VmImagePropertyTbl, CHANSVmPropertyCount(VmImagePropertyTbl),
-                                    vmNull, 0) == 0) {
+        if (CHANSVmNewBuiltinObject(vm, "Image", vmNull, VmImageCtor, vmNull, vmNull, vmNull, VmImagePropertyTbl,
+                                    CHANSVmPropertyCount(VmImagePropertyTbl), vmNull, 0) == 0) {
             goto class_fail;
         }
 
@@ -6234,7 +6234,6 @@ CHANSVmErr CHANSVmInit(CHANSVm* vm, vmPtr work, vmU32 size) {
         class_fail:
             result = CHANS_VM_ERR_NATIVE_METHOD_INIT;
         }
-
     }
 
     memset(&pVm->accumulator, 0, sizeof(CHANSVmObjHdr));
@@ -7301,12 +7300,14 @@ CHANSVmErr CHANSVmStep(CHANSVm* vm, int stepCount) {
 
                     if (result == CHANS_VM_OK) {
                         result = CHANSVmDeleteObject(vm, &tmpObj);
-                        if (result == CHANS_VM_OK && leftOp != &pVm->accumulator && leftOp != &tmpObj && (leftOp->flags.raw & CHANSVM_OBJ_FLAG_READONLY) == 0 &&
+                        if (result == CHANS_VM_OK && leftOp != &pVm->accumulator && leftOp != &tmpObj &&
+                            (leftOp->flags.raw & CHANSVM_OBJ_FLAG_READONLY) == 0 &&
                             (result = CHANSVmDeleteObject(vm, leftOp), result == CHANS_VM_OK)) {
                             // TODO: find the correct sizeof(...) expression
                             CHANSVmFree(vm, leftOp, 0x20);
                         }
-                        if (result == CHANS_VM_OK && rightOp != &pVm->accumulator && rightOp != &tmpObj && (rightOp->flags.raw & CHANSVM_OBJ_FLAG_READONLY) == 0 &&
+                        if (result == CHANS_VM_OK && rightOp != &pVm->accumulator && rightOp != &tmpObj &&
+                            (rightOp->flags.raw & CHANSVM_OBJ_FLAG_READONLY) == 0 &&
                             (result = CHANSVmDeleteObject(vm, rightOp), result == CHANS_VM_OK)) {
                             // TODO: find the correct sizeof(...) expression
                             CHANSVmFree(vm, rightOp, 0x20);
@@ -7973,7 +7974,8 @@ CHANSVmErr CHANSVmStep(CHANSVm* vm, int stepCount) {
         if (opSize == -1) {
             return 0x11a0;
         }
-        if (pVm->pActiveCtx == vmNull || pVm->pActiveCtx->pDbg == vmNull || (newPos = pVm->pActiveCtx->pc + opSize) >= pVm->pActiveCtx->pDbg->codeSize) {
+        if (pVm->pActiveCtx == vmNull || pVm->pActiveCtx->pDbg == vmNull ||
+            (newPos = pVm->pActiveCtx->pc + opSize) >= pVm->pActiveCtx->pDbg->codeSize) {
             return CHANS_VM_ERR_CODE_RANGE;
         }
         pVm->pActiveCtx->pc = newPos;
