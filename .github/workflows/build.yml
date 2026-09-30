@@ -7,8 +7,7 @@ on:
 
 jobs:
   build:
-    # This is a *private* build container.
-    container: ghcr.io/koopthekoopa/wii-ipl-build:main
+    container: ghcr.io/hyperwilliam/wii-ipl-build:main
 
     runs-on: ubuntu-latest
     strategy:
