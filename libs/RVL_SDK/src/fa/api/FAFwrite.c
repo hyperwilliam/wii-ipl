@@ -1,3 +1,3 @@
-void FAFread() {
+void FAFwrite() {
     pfstub_fwrite();
 }
